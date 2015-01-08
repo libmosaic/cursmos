@@ -1,0 +1,24 @@
+# libmosaic build script
+Import ('env')
+
+# the cursmos libraries
+cursmos = env.SharedLibrary ('libcursmos', 'cursmos.c')
+stream_io = env.SharedLibrary ('libcursmos_stream_io', 'cursmos_stream_io.c')
+
+Default ([cursmos, stream_io])
+
+## INSTALL STUFF ##
+# includes -> *.h
+includes = Glob ('#include/*.h')
+
+# pkg-config files -> *.pc
+pkgconfigs = Glob ('#pkgconfigs/*.pc')
+
+env.Install ('/usr/lib', [cursmos, stream_io])
+env.Install ('/usr/include/mosaic', includes)
+env.Install ('/usr/share/pkgconfig', pkgconfigs)
+# targets: install{,-bin,-lib,-include}
+env.Alias ('install-lib', '/usr/lib')
+env.Alias ('install-include', '/usr/include')
+env.Alias ('install-pkgconfig', '/usr/share/pkgconfig')
+env.Alias ('install', ['install-lib', 'install-include', 'install-bin', 'install-pkgconfig'])

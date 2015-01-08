@@ -1,0 +1,10 @@
+prefix=/usr
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: cursmos
+Description: Cursmos, the Curses wrapper for libmosaic
+Version: 0.1.0
+Requires.private: mosaic, ncurses, panel
+Cflags: -I${includedir}
+Libs: -L${libdir} -lcursmos
