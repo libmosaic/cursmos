@@ -5,13 +5,12 @@ Help ("""
 Welcome to the libcursmos' build script
 
 The default build output is the build/ directory.
-This package provide the shared libraries for mosaic and curses wrapper, 
-and a cat application (moscat).
+This package provide the shared libraries for the curses wrapper for libmosaic.
 
-You can `scons install` everything in the /usr/{lib,include,bin}/ directories.
+You can `scons install` everything in the /usr/{lib,include}/ directories.
 For installing only a part of libcursmos (maybe you want only the shared 
 libraries), you can `scons install-lib` or `scons install-include` or
-`scons install-pkgconfig` or `scons install-bin`.
+`scons install-pkgconfig`.
 
 Everything can be uninstalled running `scons uninstall`.
 """)

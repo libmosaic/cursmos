@@ -5,6 +5,7 @@ libdir=${prefix}/lib
 Name: cursmos_stream_io
 Description: Cursmos_stream_io, the stream IO definitions for libcursmos
 Version: 0.1.0
-Requires.private: cursmos, mosaic_stream_io
+Requires: mosaic_stream_io
+Requires.private: cursmos
 Cflags: -I${includedir}
 Libs: -L${libdir} -lcursmos_stream_io

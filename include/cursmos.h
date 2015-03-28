@@ -108,7 +108,7 @@ void LinkCURS_MOS (CURS_MOS *dest, CURS_MOS *src, enum direction dir);
  * @return 0 on success
  * @return ERR on error
  */
-int curs_mosAddch (CURS_MOS *image, int y, int x, int c);
+int curs_mosSetCh (CURS_MOS *image, int y, int x, int c);
 /// Just a nice definition for getting the mos_char
 #define curs_mosGetCh(i, y, x)		(mosGetCh (i->img, y, x))
 /// Another nice definition for mos_char, without boundaries checking
