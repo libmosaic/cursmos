@@ -11,6 +11,7 @@ void InitIMGS (IMGS *imgs) {
 void CircularIMGS (IMGS *imgs, CURS_MOS *mos) {
 	imgs->list = mos;
 	mos->next = mos->prev = mos;
+	imgs->size = 1;
 }
 
 
