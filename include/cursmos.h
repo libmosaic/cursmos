@@ -70,11 +70,13 @@ CURS_MOS * NewCURS_MOS (int new_height, int new_width);
  */
 CURS_MOS * SubCURS_MOS (CURS_MOS *parent, int height, int width, int begin_y, int begin_x);
 /**
- * Refreshes target's WINDOW, rewriting it from scratch
+ * Rewrite target's WINDOW from scratch
  *
- * @param[in] target CURS_MOS to have it's WINDOW refreshed
+ * @note This function doesn't refresh the WINDOW
+ *
+ * @param[in] target CURS_MOS to have it's WINDOW rewritten
  */
-void RefreshCURS_MOS (CURS_MOS *target);
+void RewriteCURS_MOS (CURS_MOS *target);
 /**
  * Resize a @ref CURS_MOS, resizing the MOSAIC inside and it's WINDOW
  * @sa ResizeCURS_MOS_WINDOW

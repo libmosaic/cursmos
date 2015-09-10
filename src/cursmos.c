@@ -90,7 +90,7 @@ int TrimCURS_MOS (CURS_MOS *target, char resize) {
 }
 
 
-void RefreshCURS_MOS (CURS_MOS *target) {
+void RewriteCURS_MOS (CURS_MOS *target) {
 	wmove (target->win, 0, 0);
 	
 	// write in the WINDOW
@@ -103,8 +103,6 @@ void RefreshCURS_MOS (CURS_MOS *target) {
 	}
 
 	wstandend (target->win);
-
-	prefresh (target->win, target->y, target->x, 0, 0, LINES - 2, COLS - 1);
 }
 
 
@@ -151,14 +149,6 @@ int curs_mosSetAttr (CURS_MOS *image, int y, int x, mos_attr a) {
 
 	mvwchgat (image->win, y, x, 1, bold ? A_BOLD : A_NORMAL, a, NULL);
 	return 0;
-}
-
-
-void DisplayCurrentMOSAIC (CURS_MOS *current) {
-	show_panel (current->pan);
-	update_panels ();
-	doupdate ();
-	prefresh (current->win, current->y, current->x, 0, 0, LINES - 2, COLS - 1);
 }
 
 

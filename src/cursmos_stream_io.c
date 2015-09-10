@@ -8,7 +8,7 @@ int fgetCURS_MOS (CURS_MOS *target, FILE *stream) {
 		// resize only target's WINDOW, as the MOSAIC was resized on fgetMOSAIC
 		ResizeCURS_MOS_WINDOW (target, target->img->height, target->img->width);
 		// refreshing
-		RefreshCURS_MOS (target);
+		RewriteCURS_MOS (target);
 	}
 
 	return aux;
@@ -23,7 +23,7 @@ int LoadCURS_MOS (CURS_MOS *target, const char *file_name) {
 		// resize only target's WINDOW, as the MOSAIC was resized on LoadMOSAIC
 		ResizeCURS_MOS_WINDOW (target, target->img->height, target->img->width);
 		// refreshing
-		RefreshCURS_MOS (target);
+		RewriteCURS_MOS (target);
 	}
 
 	return aux;
