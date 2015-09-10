@@ -24,6 +24,7 @@ CURS_MOS * NewCURS_MOS (int new_height, int new_width) {
 	new_image->img = NewMOSAIC (new_height, new_width);
 
 	if (!new_image->img) {
+		free (new_image);
 		return NULL;
 	}
 
@@ -34,6 +35,30 @@ CURS_MOS * NewCURS_MOS (int new_height, int new_width) {
 
 	new_image->pan = new_panel (new_image->win);
 	DisplayCurrentMOSAIC (new_image);
+
+	return new_image;
+}
+
+
+CURS_MOS * SubCURS_MOS (CURS_MOS *parent, int height, int width, int begin_y, int begin_x) {
+	CURS_MOS *new_image;
+	if ((new_image = (CURS_MOS *) malloc (sizeof (CURS_MOS))) == NULL) {
+		return NULL;
+	}
+	// get subMOSAIC
+	new_image->img = SubMOSAIC (parent->img, height, width, begin_y, begin_x);
+
+	if (!new_image->img) {
+		free (new_image);
+		return NULL;
+	}
+	
+	// get the curses subwindow and create panel
+	new_image->win = subpad (parent->win, height, width, begin_y, begin_x);
+
+	new_image->y = new_image->x = 0;
+
+	new_image->pan = new_panel (new_image->win);
 
 	return new_image;
 }

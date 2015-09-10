@@ -48,6 +48,27 @@ void CircularIMGS (IMGS *imgs, CURS_MOS *mos);
  * @return __NULL__ if allocation failed
  */
 CURS_MOS * NewCURS_MOS (int new_height, int new_width);
+
+/**
+ * Gets a CURS_MOS inside a CURS_MOS: CURS_MOSception!
+ *
+ * @note SubCURS_MOS shares memory with it's relative CURS_MOS, so
+ * changes affecting one will affect the other.
+ *
+ * @warning Freeing a SubCURS_MOS must be done before it's relative, as curses'
+ * subWINDOWs must be freed before it's relatives. This is different from 
+ * SubMOSAICs, which are used here.
+ *
+ * @param[in] parent	The outter CURS_MOS
+ * @param[in] begin_y 	The upper-left Y coordinate, where inner CURS_MOS begins
+ * @param[in] begin_x 	The upper-left X coordinate, where inner CURS_MOS begins
+ * @param[in] height	Inner CURS_MOS' height
+ * @param[in] width		Inner CURS_MOS' width
+ *
+ * @return SubCURS_MOS
+ * @return NULL on allocation errors, or if coordinates get out of bounds
+ */
+CURS_MOS * SubCURS_MOS (CURS_MOS *parent, int height, int width, int begin_y, int begin_x);
 /**
  * Refreshes target's WINDOW, rewriting it from scratch
  *
