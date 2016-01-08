@@ -21,7 +21,7 @@ typedef struct curs_mos_t {
 	int y,		///< the Y coordinate of the piece of @ref img showed at the pad
 		x;		///< the X coordinate of the piece of @ref img showed at the pad
 	struct curs_mos_t *prev,	///< previous CURS_MOS
-					*next;	///< next CURS_MOS
+					  *next;	///< next CURS_MOS
 	WINDOW *win;	///< window for showing the MOSAIC
 	PANEL *pan;		///< panel for showing the window
 } CURS_MOS;

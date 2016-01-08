@@ -44,8 +44,23 @@ int LoadCURS_MOS (CURS_MOS *target, const char *file_name);
  *
  * @param[out] imgs The IMGS list to be written into
  * @param[in] file_name The name of the loading file
+ *
+ * @return 0 on success
+ * @return ERR on reading first MOSAIC
+ * @return _errno_ if error on opening file
  */
 int LoadIMGS (IMGS *imgs, const char *file_name);
+/**
+ * Save a whole bunch of MOSAICs into a file
+ *
+ * @param[out] imgs The IMGS list to be written in the file
+ * @param[in] file_name The name of the saving file
+ *
+ * @return 0 on success
+ * @return ERR on saving MOSAIC
+ * @return _errno_ if error on opening file
+ */
+int SaveIMGS (IMGS *imgs, const char *file_name);
 
 
 

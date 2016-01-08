@@ -30,9 +30,30 @@ int LoadCURS_MOS (CURS_MOS *target, const char *file_name) {
 }
 
 
-int LoadIMGS (IMGS *imgs, const char *file_name) {
+int SaveIMGS (IMGS *imgs, const char *file_name) {
 	FILE *f;
 	if ((f = fopen (file_name, "w")) == NULL) {
+		return errno;
+	}
+
+	int i, ret = 0;
+	CURS_MOS *aux;
+	for (i = 0, aux = imgs->list; i < imgs->size; i++, aux = aux->next) {
+		ret = fputCURS_MOS (aux, f);
+		if (ret == ERR) {
+			break;
+		}
+	}
+
+	fclose (f);
+
+	return ret;
+}
+
+
+int LoadIMGS (IMGS *imgs, const char *file_name) {
+	FILE *f;
+	if ((f = fopen (file_name, "r")) == NULL) {
 		return errno;
 	}
 	
