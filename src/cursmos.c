@@ -145,9 +145,11 @@ int curs_mosSetAttr (CURS_MOS *image, int y, int x, mos_attr a) {
 		return ERR;
 	}
 
-	int bold = extractBold (&a);
+	mos_attr bold = extractBold (&a);
+	mos_attr underline = extractUnderline (&a);
 
-	mvwchgat (image->win, y, x, 1, bold ? A_BOLD : A_NORMAL, a, NULL);
+	mvwchgat (image->win, y, x, 1,
+			(bold ? A_BOLD : 0) | (underline ? A_UNDERLINE : 0), a, NULL);
 	return 0;
 }
 
